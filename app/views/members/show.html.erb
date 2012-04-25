@@ -1,0 +1,11 @@
+<p id="notice"><%= notice %></p>
+
+<h2><%= @member.coop_id %></h2>
+<span class="member-name"><%= @member.first_name %> <%= @member.last_name %></span>
+<%= mail_to @member.email_address, "Email" %>
+
+
+<div>
+<%= link_to 'Edit', edit_member_path(@member) %> |
+<%= link_to 'Back', members_path %>
+</div>

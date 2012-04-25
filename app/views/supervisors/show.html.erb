@@ -1,0 +1,12 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @supervisor.first_name %>
+  <%= @supervisor.last_name %>
+  <%= mail_to @supervisor.email_address, "Email" %>
+</p>
+
+
+<%= link_to 'Edit', edit_supervisor_path(@supervisor) %> |
+<%= link_to 'Back', supervisors_path %>

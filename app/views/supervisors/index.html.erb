@@ -1,0 +1,25 @@
+<h1>Listing supervisors</h1>
+
+<table>
+  <tr>
+    <th>ID</th>
+    <th>Name</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @supervisors.each do |supervisor| %>
+  <tr>
+    <td><%= supervisor.id %></td>
+    <td><%= supervisor.first_name %> <%= supervisor.last_name %></td>
+    <td><%= link_to 'Show', supervisor %></td>
+    <td><%= link_to 'Edit', edit_supervisor_path(supervisor) %></td>
+    <td><%= link_to 'Destroy', supervisor, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Supervisor', new_supervisor_path %>
