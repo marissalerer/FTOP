@@ -18,6 +18,9 @@
   <%= f.text_field :hours_worked %><br/>
   <%= f.label 'Supervisor' %>
   <%= f.text_field :supervisor_id %><br/>
+
+  <%= select_tag "supervisor", options_from_collection_for_select(@supervisors, "id", "first_name") %> 
+
   <%= f.label 'Description' %>
   <%= f.text_field :description %><br/>
   <%= f.label 'Comments' %>

@@ -25,6 +25,7 @@ class TimeEntriesController < ApplicationController
   # GET /time_entries/new.json
   def new
     @time_entry = TimeEntry.new
+    @supervisors = Member.where(supervisor: true)
 
     respond_to do |format|
       format.html # new.html.erb

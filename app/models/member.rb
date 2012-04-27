@@ -1,5 +1,5 @@
 class Member < ActiveRecord::Base
-  attr_accessible :coop_id, :first_name, :last_name, :email_address
+  attr_accessible :coop_id, :first_name, :last_name, :email_address, :supervisor
   validates_presence_of :coop_id,
   						:first_name,
   						:last_name,
