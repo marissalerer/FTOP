@@ -43,6 +43,7 @@ class TimeEntriesController < ApplicationController
   # POST /time_entries.json
   def create
     @time_entry = TimeEntry.new(params[:time_entry])
+    @supervisors = Member.where(supervisor: true)
 
     respond_to do |format|
       if @time_entry.save
