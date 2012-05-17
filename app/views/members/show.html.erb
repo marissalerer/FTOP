@@ -1,8 +1,10 @@
 <p id="notice"><%= notice %></p>
 
-<h2><%= @member.coop_id %></h2>
-<span class="member-name"><%= @member.first_name %> <%= @member.last_name %></span>
+<h2><%= @member.first_name %> <%= @member.last_name %> : <%= @member.coop_id %></h2>
+<span class="member-name"><%= @member.full_name %></span>
 <%= mail_to @member.email_address, "Email" %>
+
+<p>ToDo: add in time entries</p>
 
 
 <div>
