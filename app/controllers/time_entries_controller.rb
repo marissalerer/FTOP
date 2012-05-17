@@ -3,6 +3,7 @@ class TimeEntriesController < ApplicationController
   # GET /time_entries.json
   def index
     @time_entries = TimeEntry.all
+    @supervisors = Member.where(supervisor: true)
 
     respond_to do |format|
       format.html # index.html.erb
@@ -14,6 +15,7 @@ class TimeEntriesController < ApplicationController
   # GET /time_entries/1.json
   def show
     @time_entry = TimeEntry.find(params[:id])
+    @supervisors = Member.where(supervisor: true)
 
     respond_to do |format|
       format.html # show.html.erb
@@ -60,6 +62,7 @@ class TimeEntriesController < ApplicationController
   # PUT /time_entries/1.json
   def update
     @time_entry = TimeEntry.find(params[:id])
+    @supervisors = Member.where(supervisor: true)
 
     respond_to do |format|
       if @time_entry.update_attributes(params[:time_entry])
@@ -76,6 +79,7 @@ class TimeEntriesController < ApplicationController
   # DELETE /time_entries/1.json
   def destroy
     @time_entry = TimeEntry.find(params[:id])
+    @supervisors = Member.where(supervisor: true)
     @time_entry.destroy
 
     respond_to do |format|
