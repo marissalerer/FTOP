@@ -1,9 +1,8 @@
 <p id="notice"><%= notice %></p>
 
-<h2><%= @member.first_name %> <%= @member.last_name %> : <%= @member.coop_id %></h2>
-<span class="member-name"><%= @member.full_name %></span>
-<%= mail_to @member.email_address, "Email" %>
+<h2><%= mail_to @member.email_address, @member.full_name %> : <%= @member.coop_id %></h2>
 
+<%= @timecard %>
 <p>ToDo: add in time entries</p>
 
 

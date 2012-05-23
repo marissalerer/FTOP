@@ -1,6 +1,8 @@
 <p id="notice"><%= notice %></p>
 
+<%= mail_to @member.email_address, @member.full_name %><br/>
 <%= @time_entry.coop_id %><br/>
+<%= @time_entry.date_worked %><br/>
 <%= @time_entry.hours_worked %><br/>
 <%= @time_entry.description %><br/>
 

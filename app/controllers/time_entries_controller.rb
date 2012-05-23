@@ -16,6 +16,7 @@ class TimeEntriesController < ApplicationController
   def show
     @time_entry = TimeEntry.find(params[:id])
     @supervisors = Member.where(supervisor: true)
+    @member = Member.find(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
