@@ -14,7 +14,7 @@ class MembersController < ApplicationController
   # GET /members/1.json
   def show
     @member = Member.find(params[:id])
-    @timecard = TimeEntry.find_all_by_coop_id(:coop_id)
+    @timecard = TimeEntry.find_all_by_coop_id(@member.coop_id)
     
     respond_to do |format|
       format.html # show.html.erb
