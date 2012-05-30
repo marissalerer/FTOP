@@ -9,6 +9,7 @@
 
 <% @time_entries.each do |time_entry| %>
   <tr>
+    <td><%= @member %></td>
     <td><%= link_to 'Show', time_entry %></td>
     <td><%= link_to 'Edit', edit_time_entry_path(time_entry) %></td>
     <td><%= link_to 'Destroy', time_entry, confirm: 'Are you sure?', method: :delete %></td>
