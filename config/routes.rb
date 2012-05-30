@@ -1,7 +1,8 @@
 Ftop::Application.routes.draw do
-  resources :supervisors
 
   resources :members
+
+  match 'time_entries/report' => 'time_entries#report'
 
   resources :time_entries
 

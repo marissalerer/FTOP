@@ -30,6 +30,8 @@ class TimeEntriesController < ApplicationController
   def report
     @time_entries = TimeEntry.all
     @member = Member.all
+    @timecards = Member.joins(:time_entries)
+    # @hours = TimeEntry.where(coop_id: Member.coop_id).hours_worked
     # select fname, users_id, sum(hours_worked) as total_hours, floor(sum(hours_worked)/2.75) as shifts, (sum(hours_worked)/2.75 - floor(sum(hours_worked)/2.75)) * 2.75 as carry_over_hours from time_entries left join users on time_entries.users_id=users.id where created_at between '2012-03-01' and '2012-05-01' group by users_id
     respond_to do |format|
       format.html # report.html.erb
@@ -60,6 +62,7 @@ class TimeEntriesController < ApplicationController
   def create
     @time_entry = TimeEntry.new(params[:time_entry])
     @supervisors = Member.where(supervisor: true)
+    # @member = Member.find(params[:coop_id])
 
     respond_to do |format|
       if @time_entry.save

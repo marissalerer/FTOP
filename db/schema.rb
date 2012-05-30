@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120427152931) do
+ActiveRecord::Schema.define(:version => 20120530143736) do
 
   create_table "members", :force => true do |t|
     t.integer  "coop_id"
@@ -27,7 +27,7 @@ ActiveRecord::Schema.define(:version => 20120427152931) do
   add_index "members", ["email_address"], :name => "index_members_on_email_address", :unique => true
 
   create_table "time_entries", :force => true do |t|
-    t.string   "email_address",                :null => false
+    t.string   "email_address"
     t.datetime "date_worked",                  :null => false
     t.float    "hours_worked",                 :null => false
     t.integer  "supervisor_id",                :null => false
