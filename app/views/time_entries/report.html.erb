@@ -1,38 +1,27 @@
 <h1>Report</h1>
 
-<table>
-  <tr>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
-  select full_name, coop_id, sum(hours_worked) as total_hours, floor(sum(hours_worked)/2.75) as shifts, (sum(hours_worked)/2.75 - floor(sum(hours_worked)/2.75)) * 2.75 as carry_over_hours from time_entries left join members on time_entries.coop_id=members.id where created_at between '2012-03-01' and '2012-05-01' group by coop_id
-
-<% @member.each do |member| %>
-  <tr>
-    <td><%= member.full_name %></td>
-    <td><%= member.coop_id %></td>
-    <td><%= TimeEntry.where(:coop_id => member.coop_id).sum(:hours_worked) %></td>
-    <td><%= @timecards %></td>
-
-
-  </tr>
-<% end %>
-</table>
-
-<h1>Time Entries</h1>
+-on the 1st of the month grab last month's carryover balace<br/>
+-add it to this months hours_worked<br/>
+-divide into shifts<br/>
+-store this month's carryover balance<br/><br/>
 
 <table>
-<% @time_entries.each do |time_entry| %>
   <tr>
-    <td>
-     
-        <p><%= Member.where(:coop_id => time_entry.coop_id).pluck(:first_name)  %></p>
-  
-    </td>
+    <td>Name</td>
+    <td>Coop ID</td>
+    <td>Total Hours</td>
+    <td>Shifts</td>
+    <td>Carry Over Hours</td>
+   </tr> 
+
+<% @timecards.each do |time_entry| %>
+  <tr>
+    <td><%= time_entry.full_name %></td>
     <td><%= time_entry.coop_id %></td>
-    <td><%= time_entry.hours_worked %></td>
+    <td><%= time_entry.total_hours %></td>
+    <td><%= time_entry.shifts %></td>
+    <td><%= time_entry.carry_over_hours %></td>
+
   </tr>
 <% end %>
 </table>
