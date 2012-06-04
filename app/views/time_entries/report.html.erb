@@ -15,7 +15,7 @@ End Date: <%= @end_date %><br/><br/>
   <tr>
     <td><strong>Name</strong></td>
     <td><strong>Coop ID</strong></td>
-    <td><strong>Total Hours for Month</strong></td>
+    <td><strong>Total Hours for <%= Date::MONTHNAMES[Date.today.month-1] %></strong><br/>(including carryover)</td>
     <td><strong>Shifts</strong></td>
     <td><strong>Carry Over Hours</strong></td>
    </tr> 
