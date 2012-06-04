@@ -1,26 +1,32 @@
-<h1>Report</h1>
+<h1>Report for <%= Date::MONTHNAMES[Date.today.month-1] %></h1>
 
--on the 1st of the month grab last month's carryover balace<br/>
+Today's Date: <%= Date.today %><br/>
+Start Date: <%= @start_date %><br/>
+End Date: <%= @end_date %><br/><br/>
+
+-on the 1st of the month grab last month's member.carryover_hours balace<br/>
 -add it to this months hours_worked<br/>
 -divide into shifts<br/>
 -store this month's carryover balance<br/><br/>
 
-<table>
+
+
+<table border="1" cellpadding="5" cellspacing="5">
   <tr>
-    <td>Name</td>
-    <td>Coop ID</td>
-    <td>Total Hours</td>
-    <td>Shifts</td>
-    <td>Carry Over Hours</td>
+    <td><strong>Name</strong></td>
+    <td><strong>Coop ID</strong></td>
+    <td><strong>Total Hours for Month</strong></td>
+    <td><strong>Shifts</strong></td>
+    <td><strong>Carry Over Hours</strong></td>
    </tr> 
 
-<% @timecards.each do |time_entry| %>
+<% @member.each do |member| %>
   <tr>
-    <td><%= time_entry.full_name %></td>
-    <td><%= time_entry.coop_id %></td>
-    <td><%= time_entry.total_hours %></td>
-    <td><%= time_entry.shifts %></td>
-    <td><%= time_entry.carry_over_hours %></td>
+    <td><%= member.full_name %></td>
+    <td><%= member.coop_id %></td>
+    <td><%= member.current_hours %></td>
+    <td><%= (member.current_hours/2.75).floor %></td>
+    <td><%= member.carryover_hours.to_f %></td>
 
   </tr>
 <% end %>
