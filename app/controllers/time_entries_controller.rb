@@ -17,7 +17,11 @@ class TimeEntriesController < ApplicationController
   def show
     @time_entry = TimeEntry.find(params[:id])
     @supervisors = Member.where(supervisor: true)
-    @member = Member.find(params[:id])
+    @coop_id = @time_entry.coop_id
+    @member = Member.where(coop_id: @coop_id)
+    #@member = Member.where(coop_id: 0)
+    #@member = Member.find(params[:coop_id => @time_entry.coop_id])
+    #@member = Member.find(:all, :conditions => ['coop_id = ?', @time_entry.coop_id])
 
     respond_to do |format|
       format.html # show.html.erb
@@ -28,9 +32,47 @@ class TimeEntriesController < ApplicationController
   # GET /time_entries/report
   # GET /time_entries/reort.json
   def report
-    @time_entries = TimeEntry.all
+
     @member = Member.all
-    @timecards = Member.joins(:time_entries)
+    @time_entries = TimeEntry.all
+
+    #Member.update_all(:current_hours => :carryover_hours+:current_hours)
+
+    #Member.update_attribute('current_hours', '40')
+
+    # Member.all do |member|
+    #   member[current_hours] = 30
+    #   member.save
+    #  end
+
+    month = Date.today.month
+    year = Date.today.year
+    @start_date = Date.new(year,month-1,01)
+    @end_date = Date.new(year,month,01)
+
+    @member.each do |member|
+      
+      hours = TimeEntry.where("coop_id = ? AND created_at >= ? AND created_at < ?", member.coop_id, @start_date, @end_date)
+      member.current_hours = hours.sum(:hours_worked)
+      member.current_hours = member.current_hours + member.carryover_hours
+      member.carryover_hours = member.current_hours.remainder(2.75)
+    end
+      
+
+
+
+    # for each Member do the following:
+    #   get member.coop_id
+    #   get sum of hours_worked in current month store in member.current_hours
+    #   add carryover_hours to member.current_hours
+    #   divide by 2.75 -> store whole number*2.75
+    #   update carryover_hours with remainder
+
+
+    #@timecards = Member.find_by_sql("select first_name||' '||last_name as full_name, coop_id, current_hours, carryover_hours, current_hours/2.75 as shifts")
+    
+    # @timecards = TimeEntry.find_by_sql("select first_name||' '||last_name as full_name, time_entries.coop_id, sum(hours_worked) as total_hours, cast(sum(hours_worked)/2.75 as INT) as shifts, round((sum(hours_worked)/2.75 - cast(sum(hours_worked)/2.75 as INT)) * 2.75) as carry_over_hours from time_entries left join members on time_entries.coop_id=members.coop_id where time_entries.created_at between '2012-03-01' and '2012-06-02' group by time_entries.coop_id")
+    
     # @hours = TimeEntry.where(coop_id: Member.coop_id).hours_worked
     # select fname, users_id, sum(hours_worked) as total_hours, floor(sum(hours_worked)/2.75) as shifts, (sum(hours_worked)/2.75 - floor(sum(hours_worked)/2.75)) * 2.75 as carry_over_hours from time_entries left join users on time_entries.users_id=users.id where created_at between '2012-03-01' and '2012-05-01' group by users_id
     respond_to do |format|

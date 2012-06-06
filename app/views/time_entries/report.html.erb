@@ -1,1 +1,37 @@
+<<<<<<< HEAD
 <p id="notice"><%= notice %></p>
+=======
+<h1>Report for <%= Date::MONTHNAMES[Date.today.month-1] %></h1>
+
+Today's Date: <%= Date.today %><br/>
+Start Date: <%= @start_date %><br/>
+End Date: <%= @end_date %><br/><br/>
+
+-on the 1st of the month grab last month's member.carryover_hours balace<br/>
+-add it to this months hours_worked<br/>
+-divide into shifts<br/>
+-store this month's carryover balance<br/><br/>
+
+
+
+<table border="1" cellpadding="5" cellspacing="5">
+  <tr>
+    <td><strong>Name</strong></td>
+    <td><strong>Coop ID</strong></td>
+    <td><strong>Total Hours for <%= Date::MONTHNAMES[Date.today.month-1] %></strong><br/>(including carryover)</td>
+    <td><strong>Shifts</strong></td>
+    <td><strong>Carry Over Hours</strong></td>
+   </tr> 
+
+<% @member.each do |member| %>
+  <tr>
+    <td><%= member.full_name %></td>
+    <td><%= member.coop_id %></td>
+    <td><%= member.current_hours %></td>
+    <td><%= (member.current_hours/2.75).floor %></td>
+    <td><%= member.carryover_hours.to_f %></td>
+
+  </tr>
+<% end %>
+</table>
+>>>>>>> 90b9071481996228d16732de8d197e24013cf60a
