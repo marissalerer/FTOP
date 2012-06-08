@@ -104,7 +104,22 @@ class TimeEntriesController < ApplicationController
   def create
     @time_entry = TimeEntry.new(params[:time_entry])
     @supervisors = Member.where(supervisor: true)
-    # @member = Member.find(params[:coop_id])
+    #@members = Member.all
+    @member = Member.where(coop_id: @time_entry.coop_id)[0]
+
+    @lastTimeEntry = TimeEntry.where(:coop_id => @time_entry.coop_id).maximum('created_at')
+    @lastTimeEntryFormat = @lastTimeEntry.strftime("%m%Y")
+    @thisMonthYear = Time.now.utc.strftime("%m%Y")
+
+    if @lastTimeEntryFormat != @thisMonthYear
+      @member.current_hours = @member.carryover_hours + @time_entry.hours_worked
+    else
+      @member.current_hours = @member.current_hours + @member.carryover_hours + @time_entry.hours_worked
+    end
+    @member.carryover_hours = @member.current_hours.remainder(2.75)
+    @member.current_hours = @member.current_hours - @member.carryover_hours
+    @member.save
+
 
     respond_to do |format|
       if @time_entry.save

@@ -1,5 +1,5 @@
 class TimeEntry < ActiveRecord::Base
-  attr_accessible :coop_id, :date_worked, :hours_worked, :supervisor_id, :description, :comment
+  attr_accessible :coop_id, :date_worked, :hours_worked, :supervisor_id, :description, :comment, :email_address
   validates_presence_of :coop_id, 
   											:date_worked,
   											:hours_worked,

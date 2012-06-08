@@ -1,5 +1,5 @@
 class Member < ActiveRecord::Base
-  attr_accessible :coop_id, :first_name, :last_name, :email_address, :supervisor
+  attr_accessible :coop_id, :first_name, :last_name, :email_address, :supervisor, :current_hours, :carryover_hours
   validates_presence_of :coop_id,
   						:first_name,
   						:last_name,
