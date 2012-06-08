@@ -18,7 +18,7 @@ class TimeEntriesController < ApplicationController
     @time_entry = TimeEntry.find(params[:id])
     @supervisors = Member.where(supervisor: true)
     @coop_id = @time_entry.coop_id
-    @member = Member.where(coop_id: @coop_id)
+    @member = Member.where(coop_id: @coop_id)[0]
     #@member = Member.where(coop_id: 0)
     #@member = Member.find(params[:coop_id => @time_entry.coop_id])
     #@member = Member.find(:all, :conditions => ['coop_id = ?', @time_entry.coop_id])

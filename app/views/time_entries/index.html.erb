@@ -1,7 +1,12 @@
 <h1>Listing time_entries</h1>
 
-<table>
+<table border="1" cellpadding="5" cellspacing="5">
   <tr>
+    <th>Date</th>
+    <th>Coop ID</th>
+    <th>Name</th>
+    <th>Hours Worked</th>
+    <th>Supervisor</th>
     <th></th>
     <th></th>
     <th></th>
@@ -9,7 +14,13 @@
 
 <% @time_entries.each do |time_entry| %>
   <tr>
-    <td><%= @member %></td>
+    <td><%= time_entry.created_at.strftime("%m/%d/%Y") %></td>
+    <td><%= time_entry.coop_id %></td>
+    <% @member = Member.where(coop_id: time_entry.coop_id)[0] %>
+    <td><%= @member.first_name %> <%= @member.last_name %> </td>
+    <td><%= time_entry.hours_worked %> </td>
+    <% @supervisor = Member.find(time_entry.supervisor_id) %>
+    <td><%= @supervisor.first_name %> <%= @supervisor.last_name %> </td>
     <td><%= link_to 'Show', time_entry %></td>
     <td><%= link_to 'Edit', edit_time_entry_path(time_entry) %></td>
     <td><%= link_to 'Destroy', time_entry, confirm: 'Are you sure?', method: :delete %></td>
