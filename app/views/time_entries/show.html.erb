@@ -1,10 +1,12 @@
 <p id="notice"><%= notice %></p>
 
-<%= mail_to @member.email_address, @member.full_name %><br/>
-<%= @time_entry.coop_id %><br/>
-<%= @time_entry.date_worked %><br/>
-<%= @time_entry.hours_worked %><br/>
-<%= @time_entry.description %><br/>
+<h1>Thanks for entering your time</h1>
+
+Name: <%= mail_to @member.email_address, @member.full_name %><br/>
+Coop Id: <%= @time_entry.coop_id %><br/>
+Current Hours for <%= Date::MONTHNAMES[Date.today.month] %>: <%= @member.current_hours %><br/>
+Hours Entered: <%= @time_entry.hours_worked %><br/>
+Description: <%= @time_entry.description %><br/>
 
 <%= link_to 'Edit', edit_time_entry_path(@time_entry) %> |
 <%= link_to 'Back', time_entries_path %>

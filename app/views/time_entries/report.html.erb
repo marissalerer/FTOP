@@ -12,17 +12,19 @@ End Date: <%= @end_date %><br/><br/>
     <td><strong>Coop ID</strong></td>
     <td><strong>Total Hours for <%= Date::MONTHNAMES[Date.today.month-1] %></strong><br/>(including carryover)</td>
     <td><strong>Shifts</strong></td>
-    <td><strong>Carry Over Hours</strong></td>
+    <td><strong>Carry Over Hours</strong><br/>(for next month)</td>
    </tr> 
 
 <% @member.each do |member| %>
+<% @shifts = (member.current_hours/2.75).floor %>
+<% if @shifts > 0 %>
   <tr>
     <td><%= member.full_name %></td>
     <td><%= member.coop_id %></td>
     <td><%= member.current_hours %></td>
-    <td><%= (member.current_hours/2.75).floor %></td>
+    <td><%= @shifts %></td>
     <td><%= member.carryover_hours.to_f %></td>
-
   </tr>
+  <% end %>
 <% end %>
 </table>

@@ -107,9 +107,14 @@ class TimeEntriesController < ApplicationController
     #@members = Member.all
     @member = Member.where(coop_id: @time_entry.coop_id)[0]
 
-    @lastTimeEntry = TimeEntry.where(:coop_id => @time_entry.coop_id).maximum('created_at')
-    @lastTimeEntryFormat = @lastTimeEntry.strftime("%m%Y")
     @thisMonthYear = Time.now.utc.strftime("%m%Y")
+    @lastTimeEntry = TimeEntry.where(:coop_id => @time_entry.coop_id).maximum('created_at')
+    if @lastTimeEntry
+      @lastTimeEntryFormat = @lastTimeEntry.strftime("%m%Y")
+    else
+      @lastTimeEntryFormat = @thisMonthYear
+    end
+    
 
     if @lastTimeEntryFormat != @thisMonthYear
       @member.current_hours = @member.carryover_hours + @time_entry.hours_worked
