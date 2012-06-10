@@ -6,6 +6,10 @@ Ftop::Application.routes.draw do
 
   resources :time_entries
 
+  # resources :time_entries do
+  #   get :autocomplete_members_coop_id, :on => :collection
+  # end
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
