@@ -11,32 +11,31 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120609034357) do
+ActiveRecord::Schema.define(:version => 20120611195754) do
+
+# Could not dump table "member_test" because of following StandardError
+#   Unknown type '' for column 'id'
 
   create_table "members", :force => true do |t|
     t.integer  "coop_id"
-    t.string   "first_name",                         :null => false
-    t.string   "last_name",                          :null => false
-    t.string   "email_address",                      :null => false
-    t.datetime "created_at",                         :null => false
-    t.datetime "updated_at",                         :null => false
-    t.boolean  "supervisor",      :default => false, :null => false
-    t.float    "current_hours",   :default => 0.0
+    t.string   "first_name",                       :null => false
+    t.string   "last_name",                        :null => false
+    t.string   "email_address",                    :null => false
+    t.datetime "created_at",                       :null => false
+    t.datetime "updated_at",                       :null => false
     t.float    "carryover_hours", :default => 0.0
+    t.float    "current_hours",   :default => 0.0
   end
 
   add_index "members", ["coop_id"], :name => "index_members_on_coop_id", :unique => true
   add_index "members", ["email_address"], :name => "index_members_on_email_address", :unique => true
 
   create_table "time_entries", :force => true do |t|
-    t.integer  "coop_id",       :null => false
-    t.date     "date_worked",   :null => false
-    t.float    "hours_worked",  :null => false
-    t.integer  "supervisor_id", :null => false
-    t.string   "description"
-    t.string   "comment"
-    t.datetime "created_at",    :null => false
-    t.datetime "updated_at",    :null => false
+    t.datetime "date_worked",                 :null => false
+    t.float    "hours_worked",                :null => false
+    t.datetime "created_at",                  :null => false
+    t.datetime "updated_at",                  :null => false
+    t.integer  "coop_id",      :default => 0, :null => false
   end
 
 end

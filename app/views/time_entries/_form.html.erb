@@ -10,31 +10,17 @@
       </ul>
     </div>
   <% end %>
-  <%= f.label 'Name' %>(You must be registered.)<br/>
-  <%= f.select(:coop_id, options_from_collection_for_select(@members, :coop_id, :full_name)) %>
-<br/>
+  <%= f.label 'Food Coop Id' %>(You must be registered. Not registered? Please register <%= link_to 'here', '/members/new' %>)<br/>
+  <%= f.text_field :coop_id %><br/>
+
   <%= f.label 'Date Worked' %>
   <%= f.datepicker "date_worked" %>
 
 
   <%= f.label 'Hours Worked' %>
   <%= f.text_field :hours_worked %><br/>
-  <%= f.label 'Supervisor' %>
-
-
-
-<%=  
-  f.select(:supervisor_id, options_from_collection_for_select(@supervisors, :id, :full_name)) 
-%>
-
-<br/>
-
-  <%= f.label 'Description' %>
-  <%= f.text_field :description %><br/>
-  <%= f.label 'Comments' %>
-  <%= f.text_field :comment %>
-
+  
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit "Submit Time" %>
   </div>
 <% end %>

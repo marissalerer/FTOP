@@ -3,8 +3,8 @@ class TimeEntriesController < ApplicationController
   # GET /time_entries.json
   def index
     @time_entries = TimeEntry.all
-    @supervisors = Member.where(supervisor: true)
-    @member = Member.all
+    #@supervisors = Member.where(supervisor: true)
+    #@member = Member.all
 
     respond_to do |format|
       format.html # index.html.erb
@@ -16,7 +16,7 @@ class TimeEntriesController < ApplicationController
   # GET /time_entries/1.json
   def show
     @time_entry = TimeEntry.find(params[:id])
-    @supervisors = Member.where(supervisor: true)
+    #@supervisors = Member.where(supervisor: true)
     @coop_id = @time_entry.coop_id
     @member = Member.where(coop_id: @coop_id)[0]
     #@member = Member.where(coop_id: 0)
@@ -85,7 +85,7 @@ class TimeEntriesController < ApplicationController
   # GET /time_entries/new.json
   def new
     @time_entry = TimeEntry.new
-    @supervisors = Member.where(supervisor: true)
+    #@supervisors = Member.where(supervisor: true)
     @members = Member.find(:all, :order => 'last_name ASC')
 
     respond_to do |format|
@@ -103,7 +103,7 @@ class TimeEntriesController < ApplicationController
   # POST /time_entries.json
   def create
     @time_entry = TimeEntry.new(params[:time_entry])
-    @supervisors = Member.where(supervisor: true)
+    #@supervisors = Member.where(supervisor: true)
     #@members = Member.all
     @member = Member.where(coop_id: @time_entry.coop_id)[0]
 
@@ -141,7 +141,7 @@ class TimeEntriesController < ApplicationController
   # PUT /time_entries/1.json
   def update
     @time_entry = TimeEntry.find(params[:id])
-    @supervisors = Member.where(supervisor: true)
+    #@supervisors = Member.where(supervisor: true)
 
     respond_to do |format|
       if @time_entry.update_attributes(params[:time_entry])
@@ -158,7 +158,7 @@ class TimeEntriesController < ApplicationController
   # DELETE /time_entries/1.json
   def destroy
     @time_entry = TimeEntry.find(params[:id])
-    @supervisors = Member.where(supervisor: true)
+    #@supervisors = Member.where(supervisor: true)
     @time_entry.destroy
 
     respond_to do |format|

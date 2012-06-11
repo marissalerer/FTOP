@@ -1,12 +1,1 @@
-<p id="notice"><%= notice %></p>
-
 <h2><%= mail_to @member.email_address, @member.full_name %> : <%= @member.coop_id %></h2>
-
-<%= @timecard %>
-<p>ToDo: add in time entries</p>
-
-
-<div>
-<%= link_to 'Edit', edit_member_path(@member) %> |
-<%= link_to 'Back', members_path %>
-</div>
