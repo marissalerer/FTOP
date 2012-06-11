@@ -86,7 +86,7 @@ class TimeEntriesController < ApplicationController
   def new
     @time_entry = TimeEntry.new
     @supervisors = Member.where(supervisor: true)
-    
+    @members = Member.find(:all, :order => 'last_name ASC')
 
     respond_to do |format|
       format.html # new.html.erb
@@ -109,7 +109,7 @@ class TimeEntriesController < ApplicationController
 
     @thisMonthYear = Time.now.utc.strftime("%m%Y")
     @lastTimeEntry = TimeEntry.where(:coop_id => @time_entry.coop_id).maximum('created_at')
-    if @lastTimeEntry
+    if @lastTimeEntry != nil
       @lastTimeEntryFormat = @lastTimeEntry.strftime("%m%Y")
     else
       @lastTimeEntryFormat = @thisMonthYear

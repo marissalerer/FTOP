@@ -10,8 +10,9 @@
       </ul>
     </div>
   <% end %>
-  <%= f.label 'Coop ID' %>
-  <%= f.text_field :coop_id %><br/>
+  <%= f.label 'Name' %>(You must be registered.)<br/>
+  <%= f.select(:coop_id, options_from_collection_for_select(@members, :coop_id, :full_name)) %>
+<br/>
   <%= f.label 'Date Worked' %>
   <%= f.datepicker "date_worked" %>
 
