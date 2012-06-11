@@ -4,6 +4,11 @@ gem 'rails', '3.2.3'
 gem 'jquery-rails', '>=0.2.5'
 gem 'thor', '>=0.14.4'
 
+group :production do
+  # gems specifically for Heroku go here
+  gem "pg"
+end
+
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
