@@ -1,6 +1,8 @@
 source 'https://rubygems.org'
 
 gem 'rails', '3.2.3'
+gem 'jquery-rails', '>=0.2.5'
+gem 'thor', '>=0.14.4'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
@@ -11,7 +13,6 @@ gem 'bootstrap-sass', '~> 2.0.3'
 
 gem 'rails3-jquery-autocomplete'
 gem 'nifty-generators'
-
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -26,7 +27,7 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
 end
 
-gem 'jquery-rails'
+
 gem 'jquery_datepicker'
 
 # To use ActiveModel has_secure_password

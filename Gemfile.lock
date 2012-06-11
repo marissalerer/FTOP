@@ -110,11 +110,12 @@ PLATFORMS
 DEPENDENCIES
   bootstrap-sass (~> 2.0.3)
   coffee-rails (~> 3.2.1)
-  jquery-rails
+  jquery-rails (>= 0.2.5)
   jquery_datepicker
   nifty-generators
   rails (= 3.2.3)
   rails3-jquery-autocomplete
   sass-rails (~> 3.2.3)
   sqlite3
+  thor (>= 0.14.4)
   uglifier (>= 1.0.3)
