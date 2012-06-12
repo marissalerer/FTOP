@@ -20,7 +20,6 @@ Ftop::Application.configure do
   # Generate digests for assets URLs
   config.assets.digest = true
 
-  ::ActiveSupport::Deprecation.silenced = true
 
   # Defaults to Rails.root.join("public/assets")
   # config.assets.manifest = YOUR_PATH
@@ -61,7 +60,7 @@ Ftop::Application.configure do
   config.i18n.fallbacks = true
 
   # Send deprecation notices to registered listeners
-  config.active_support.deprecation = :notify
+  config.active_support.deprecation = :silence
 
   # Log the query plan for queries taking more than this (works
   # with SQLite, MySQL, and PostgreSQL)
