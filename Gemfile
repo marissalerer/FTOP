@@ -19,6 +19,8 @@ gem 'bootstrap-sass', '~> 2.0.3'
 gem 'rails3-jquery-autocomplete'
 gem 'nifty-generators'
 
+gem "therubyracer", :require => 'v8'
+
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
