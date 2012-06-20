@@ -5,8 +5,8 @@ class CreateMembers < ActiveRecord::Migration
       t.string :first_name, :null => false
       t.string :last_name, :null => false
       t.string :email_address, :null => false
-      t.float :carryover_hours, :null => false
-      t.float :current_hours, :null => false
+      t.float :carryover_hours, :null => false, :default => 0
+      t.float :current_hours, :null => false, :default => 0
       t.timestamps
     end
     add_index :members, :email_address, :unique => true
