@@ -6,18 +6,16 @@ gem 'thor', '>=0.14.4'
 
 group :production do
   # gems specifically for Heroku go here
-  gem "pg"
+  # gem "pg"
 end
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
-gem 'sqlite3'
+# gem 'sqlite3'
+gem "pg"
 
 gem 'bootstrap-sass', '~> 2.0.3'
-
-gem 'rails3-jquery-autocomplete'
-gem 'nifty-generators'
 
 gem "therubyracer", :require => 'v8'
 
@@ -25,13 +23,13 @@ gem "therubyracer", :require => 'v8'
 # in production environments by default.
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
-  gem 'coffee-rails', '~> 3.2.1'
+  #gem 'coffee-rails', '~> 3.2.1'
 
 
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
   # gem 'therubyracer', :platform => :ruby
 
-  gem 'uglifier', '>= 1.0.3'
+  #gem 'uglifier', '>= 1.0.3'
 end
 
 group :assets do
