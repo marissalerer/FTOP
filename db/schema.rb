@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120609034357) do
+ActiveRecord::Schema.define(:version => 20120620011328) do
 
   create_table "members", :force => true do |t|
     t.integer  "coop_id"
@@ -21,8 +21,8 @@ ActiveRecord::Schema.define(:version => 20120609034357) do
     t.datetime "created_at",                         :null => false
     t.datetime "updated_at",                         :null => false
     t.boolean  "supervisor",      :default => false, :null => false
-    t.float    "current_hours",   :default => 0.0
-    t.float    "carryover_hours", :default => 0.0
+    t.float    "current_hours",   :default => 0.0,   :null => false
+    t.float    "carryover_hours", :default => 0.0,   :null => false
   end
 
   add_index "members", ["coop_id"], :name => "index_members_on_coop_id", :unique => true
