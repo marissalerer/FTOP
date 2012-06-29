@@ -23,9 +23,11 @@
 
 
     <tr>
-      <td><%= f.label 'Date Worked' %></td>
+      <td><%= f.label 'Date Worked', :placeholder => 'yyyy-mm-dd', :value => 'yyyy-mm-dd' %></td>
 
-      <td><%= f.datepicker "date_worked",  'placeholder'=>'yyyy/dd/mm', 'format'=>'yyyy mm dd' %></td>
+
+
+      <td><%= f.text_field :date_worked,  'data-behaviour'=>'datepicker' %></td>
     </tr>
 
     <tr>
