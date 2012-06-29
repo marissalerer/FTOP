@@ -37,3 +37,5 @@ body, html{
 table{
 	margin: 10px 0px;
 }
+
+*= require bootstrap-datepicker

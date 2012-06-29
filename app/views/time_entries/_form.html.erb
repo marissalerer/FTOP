@@ -24,7 +24,8 @@
 
     <tr>
       <td><%= f.label 'Date Worked' %></td>
-      <td><%= f.datepicker "date_worked", :placeholder => 'mm/dd/yyyy', :value => '' %></td>
+
+      <td><%= f.datepicker "date_worked",  'placeholder'=>'yyyy/dd/mm', 'format'=>'yyyy mm dd' %></td>
     </tr>
 
     <tr>
@@ -44,4 +45,3 @@
   
   
 <% end %>
-
