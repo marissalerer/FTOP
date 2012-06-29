@@ -1,3 +1,6 @@
+
+
+
 <%= form_for(@time_entry) do |f| %>
   <% if @time_entry.errors.any? %>
     <div id="error_explanation">
@@ -10,17 +13,35 @@
       </ul>
     </div>
   <% end %>
-  <%= f.label 'Food Coop Id' %>(You must be registered. Not registered? Please register <%= link_to 'here', '/members/new' %>)<br/>
-  <%= f.text_field :coop_id %><br/>
 
-  <%= f.label 'Date Worked' %>
-  <%= f.datepicker "date_worked" %>
+  <table>
+    <tr>
+      <td><%= f.label 'Food Coop Id#' %></td>
+      <td><%= f.text_field :coop_id, :placeholder => '12345', :value => '' %></td>
+    </tr>
 
 
-  <%= f.label 'Hours Worked' %>
-  <%= f.text_field :hours_worked %><br/>
+
+    <tr>
+      <td><%= f.label 'Date Worked' %></td>
+      <td><%= f.datepicker "date_worked", :placeholder => 'mm/dd/yyyy', :value => '' %></td>
+    </tr>
+
+    <tr>
+      <td><%= f.label 'Number of Hours' %></td>
+      <td><%= f.text_field :hours_worked, :placeholder => '0.00', :value => '' %></td>
+    </tr>
+
+    <tr>
+      <td>&nbsp;</td>
+      <td><div class="actions">
+    <%= f.submit ">> Submit Time" %>
+  </div></td>
+    </tr>
+
+  </table>
+
   
-  <div class="actions">
-    <%= f.submit "Submit Time" %>
-  </div>
+  
 <% end %>
+

@@ -13,18 +13,26 @@
 */
 body, html{
 	height:100%;
-	background:#CCC;
+	margin:0;
+	padding:0;
 }
 
 #container{
-	background:#EEE;
-	width:940px;
-	height:100%;
-	margin:0px auto;
-	border-left:1px solid #DDD;
-	border-right:1px solid #DDD;
-	padding:0 20px;
+	/*width:940px;*/
+	width:600px;
+	margin:auto;
+	padding:10px 20px;
+	
 }
+
+
+#form-wrapper{
+	border:1px solid #ccc;
+	padding:20px 10px;
+	background: #edf2eb;
+}
+
+
 
 table{
 	margin: 10px 0px;
