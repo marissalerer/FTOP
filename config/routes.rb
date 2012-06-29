@@ -4,6 +4,8 @@ Ftop::Application.routes.draw do
 
   match 'time_entries/report' => 'time_entries#report'
 
+  root :to => 'time_entries#new'
+
   resources :time_entries
 
   # resources :time_entries do
