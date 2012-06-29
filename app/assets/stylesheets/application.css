@@ -38,4 +38,4 @@ table{
 	margin: 10px 0px;
 }
 
-*= require bootstrap-datepicker
+/**= require bootstrap-datepicker*/
