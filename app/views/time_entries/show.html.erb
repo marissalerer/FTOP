@@ -1,6 +1,6 @@
 <div id="form-wrapper">
 	<h1>Thanks for entering your time!</h1>
-	<p>Name: <%= mail_to @member.email_address, @member.full_name %><br/>
+	<p>Name: <span class='bold'><%= @member.full_name %></span><br/>
 Park Slope Food Coop Id#: <span class='bold'><%= @time_entry.coop_id %></span><br/>
 
 Hours You Entered: <span class='bold'><%= @time_entry.hours_worked %></span><br/>
