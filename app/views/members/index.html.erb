@@ -12,8 +12,11 @@
     <td style="font-weight:bold;"><%= member.coop_id %></td>
     <td><%= member.full_name %></td>
     <td><%= mail_to member.email_address %></td>
+    <td> | </td>
     <td><%= link_to 'Edit', edit_member_path(member) %></td>
+    <td> | </td>
     <td><%= link_to 'Destroy', member, confirm: 'Are you sure?', method: :delete %></td>
+    <td> | </td>
   </tr>
 <% end %>
 </table>
