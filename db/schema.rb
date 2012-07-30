@@ -11,10 +11,10 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120611195754) do
+ActiveRecord::Schema.define(:version => 20120710205905) do
 
   create_table "members", :force => true do |t|
-    t.integer  "coop_id"
+    t.string   "coop_id"
     t.string   "first_name",                       :null => false
     t.string   "last_name",                        :null => false
     t.string   "email_address",                    :null => false
@@ -28,11 +28,11 @@ ActiveRecord::Schema.define(:version => 20120611195754) do
   add_index "members", ["email_address"], :name => "index_members_on_email_address", :unique => true
 
   create_table "time_entries", :force => true do |t|
-    t.datetime "date_worked",                 :null => false
-    t.float    "hours_worked",                :null => false
-    t.datetime "created_at",                  :null => false
-    t.datetime "updated_at",                  :null => false
-    t.integer  "coop_id",      :default => 0, :null => false
+    t.datetime "date_worked",                   :null => false
+    t.float    "hours_worked",                  :null => false
+    t.datetime "created_at",                    :null => false
+    t.datetime "updated_at",                    :null => false
+    t.string   "coop_id",      :default => "0", :null => false
   end
 
 end

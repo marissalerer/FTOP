@@ -11,6 +11,7 @@
   <tr>
     <td><%= link_to member.coop_id, member %></td>
     <td><%= member.full_name %></td>
+    <td><%= mail_to member.email_address %></td>
     <td><%= link_to 'Edit', edit_member_path(member) %></td>
     <td><%= link_to 'Destroy', member, confirm: 'Are you sure?', method: :delete %></td>
   </tr>
