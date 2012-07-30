@@ -9,7 +9,7 @@
 
 <% @members.each do |member| %>
   <tr>
-    <td><%= link_to member.coop_id, member %></td>
+    <td><%= member.coop_id %></td>
     <td><%= member.full_name %></td>
     <td><%= mail_to member.email_address %></td>
     <td><%= link_to 'Edit', edit_member_path(member) %></td>
