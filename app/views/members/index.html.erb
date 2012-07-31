@@ -1,10 +1,12 @@
 <h1>Listing members</h1>
 
-<table>
+<table class="members">
   <tr>
-    <th></th>
-    <th></th>
-    <th></th>
+    <td class="title">Coop ID</td>
+    <td class="title">Name</td>
+    <td class="title">Email Address</td>
+    <td></td>
+    <td></td>
   </tr>
 
 <% @members.each do |member| %>
@@ -12,11 +14,8 @@
     <td style="font-weight:bold;"><%= member.coop_id %></td>
     <td><%= member.full_name %></td>
     <td><%= mail_to member.email_address %></td>
-    <td> | </td>
-    <td><%= link_to 'Edit', edit_member_path(member) %></td>
-    <td> | </td>
-    <td><%= link_to 'Destroy', member, confirm: 'Are you sure?', method: :delete %></td>
-    <td> | </td>
+    <td class="editbtn"><%= link_to 'Edit', edit_member_path(member) %></td>
+    <td class="editbtn"><%= link_to 'Destroy', member, confirm: 'Are you sure?', method: :delete %></td>
   </tr>
 <% end %>
 </table>

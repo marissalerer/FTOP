@@ -200,3 +200,23 @@ form{
 .error_explanation{
   color:#FF0000;
 }
+
+.title{
+  font-weight:bold; 
+}
+
+.members{
+  tr{
+    border-bottom:1px solid #ccc;
+  }
+  td{
+    padding:2px 5px;
+  }
+}
+
+.editbtn{
+  a{
+    @extend a.bfc-btn;
+    @extend a.grey-btn;
+  }
+}
