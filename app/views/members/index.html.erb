@@ -15,7 +15,10 @@
     <td><%= member.full_name %></td>
     <td><%= mail_to member.email_address %></td>
     <td class="editbtn"><%= link_to 'Edit', edit_member_path(member) %></td>
-    <td class="editbtn"><%= link_to 'Destroy', member, confirm: 'Are you sure?', method: :delete %></td>
+    <td class="editbtn">
+
+      <%= button_to "delete", member, confirm: 'Are you sure?', :method=>:delete, :class=>:destroy %></td>
+
   </tr>
 <% end %>
 </table>
