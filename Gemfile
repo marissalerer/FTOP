@@ -6,7 +6,7 @@ gem 'thor', '>=0.14.4'
 
 group :production do
   # gems specifically for Heroku go here
-  # gem "pg"
+  #gem "pg"
 end
 
 # Bundle edge Rails instead:
