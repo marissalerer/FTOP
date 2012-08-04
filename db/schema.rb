@@ -11,7 +11,10 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120710205905) do
+ActiveRecord::Schema.define(:version => 20120804015806) do
+
+# Could not dump table "member_test" because of following StandardError
+#   Unknown type '' for column 'id'
 
   create_table "members", :force => true do |t|
     t.string   "coop_id"
@@ -33,6 +36,7 @@ ActiveRecord::Schema.define(:version => 20120710205905) do
     t.datetime "created_at",                    :null => false
     t.datetime "updated_at",                    :null => false
     t.string   "coop_id",      :default => "0", :null => false
+    t.string   "description"
   end
 
 end
