@@ -14,7 +14,7 @@
     </div>
   <% end %>
 
-  <table>
+  <table class="entry">
     <tr>
       <td><%= f.label 'Food Coop Id#' %></td>
       <td><%= f.text_field :coop_id, :placeholder => '12345', :value => '' %></td>
@@ -33,6 +33,11 @@
     <tr>
       <td><%= f.label 'Number of Hours' %></td>
       <td><%= f.text_field :hours_worked, :placeholder => '0.00', :value => '' %></td>
+    </tr>
+
+    <tr>
+      <td valign="top"><%= f.label 'Description' %></td>
+      <td><%= f.text_area :description, :placeholder => 'optional', :value => '', :rows => 5 %></td>
     </tr>
 
     <tr>

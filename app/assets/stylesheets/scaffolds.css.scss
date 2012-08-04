@@ -225,3 +225,15 @@ form{
     padding:0;
   }
 }
+
+textarea{
+  padding:4px;
+}
+
+.entry{
+  table{
+    td{
+      vertical-align:top !important;
+    }
+  }
+}
