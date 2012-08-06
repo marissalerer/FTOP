@@ -115,7 +115,6 @@ class TimeEntriesController < ApplicationController
       @lastTimeEntryFormat = @thisMonthYear
     end
     
-
     if @lastTimeEntryFormat != @thisMonthYear
       @member.current_hours = @member.carryover_hours + @time_entry.hours_worked
     else

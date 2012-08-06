@@ -13,9 +13,6 @@
 
 ActiveRecord::Schema.define(:version => 20120804015806) do
 
-# Could not dump table "member_test" because of following StandardError
-#   Unknown type '' for column 'id'
-
   create_table "members", :force => true do |t|
     t.string   "coop_id"
     t.string   "first_name",                       :null => false
