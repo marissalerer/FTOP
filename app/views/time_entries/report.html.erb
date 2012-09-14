@@ -1,8 +1,8 @@
-<h1>Report for <%= Date::MONTHNAMES[Date.today.month-1] %></h1>
+<h1>Time Entries Report</h1>
 
-Today's Date: <%= Date.today %><br/>
-Start Date: <%= @startD %><br/>
-End Date: <%= @endD %><br/><br/>
+<span class='bold'>Today's Date:</span> <%= Date.today.strftime("%B %d, %Y") %><br/>
+<span class='bold'>Start Date:</span> <%= @startD.strftime("%B %d, %Y") %><br/>
+<span class='bold'>End Date:</span> <%= @endD.strftime("%B %d, %Y") %><br/><br/>
 
 
 <table border="1" cellpadding="5" cellspacing="5">

@@ -32,11 +32,13 @@ class TimeEntriesController < ApplicationController
     @startD = params[:start].to_time
     @endD = params[:end].to_time
     @member = Member.all
-    @time_entries = TimeEntry.all
+    
     @report = MemberMonthReport.find(:all, :conditions => ['updated_at >= ? and updated_at <= ?',
     @startD, @endD])
 
-
+    @time_entries = TimeEntry.find(:all, :conditions => ['updated_at >= ? and updated_at <= ?',
+    @startD, @endD])
+    
     respond_to do |format|
       format.html # report.html.erb
       format.json { render json: @time_entries }

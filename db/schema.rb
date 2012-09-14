@@ -11,10 +11,10 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120914153753) do
+ActiveRecord::Schema.define(:version => 20120914214205) do
 
   create_table "member_month_reports", :force => true do |t|
-    t.integer  "member_id"
+    t.string   "member_id"
     t.integer  "year"
     t.integer  "month"
     t.float    "shifts_worked",   :default => 0.0
