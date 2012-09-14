@@ -21,6 +21,9 @@ ActiveRecord::Schema.define(:version => 20120915041329) do
     t.float    "carryover_hours", :default => 0.0
     t.datetime "created_at",                       :null => false
     t.datetime "updated_at",                       :null => false
+    t.date     "start_date"
+    t.date     "end_date"
+    t.float    "hours_worked",    :default => 0.0, :null => false
   end
 
   add_index "member_month_reports", ["member_id"], :name => "index_member_month_reports_on_member_id"
