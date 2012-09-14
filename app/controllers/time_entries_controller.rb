@@ -107,22 +107,22 @@ class TimeEntriesController < ApplicationController
     #@members = Member.all
     @member = Member.where(coop_id: @time_entry.coop_id)[0]
 
-    @thisMonthYear = Time.now.utc.strftime("%m%Y")
-    @lastTimeEntry = TimeEntry.where(:coop_id => @time_entry.coop_id).maximum('created_at')
-    if @lastTimeEntry != nil
-      @lastTimeEntryFormat = @lastTimeEntry.strftime("%m%Y")
-    else
-      @lastTimeEntryFormat = @thisMonthYear
-    end
+    # @thisMonthYear = Time.now.utc.strftime("%m%Y")
+    # @lastTimeEntry = TimeEntry.where(:coop_id => @time_entry.coop_id).maximum('created_at')
+    # if @lastTimeEntry != nil
+    #   @lastTimeEntryFormat = @lastTimeEntry.strftime("%m%Y")
+    # else
+    #   @lastTimeEntryFormat = @thisMonthYear
+    # end
     
-    if @lastTimeEntryFormat != @thisMonthYear
-      @member.current_hours = @member.carryover_hours + @time_entry.hours_worked
-    else
-      @member.current_hours = @member.current_hours + @member.carryover_hours + @time_entry.hours_worked
-    end
-    @member.carryover_hours = @member.current_hours.remainder(2.75)
-    @member.current_hours = @member.current_hours - @member.carryover_hours
-    @member.save
+    # if @lastTimeEntryFormat != @thisMonthYear
+    #   @member.current_hours = @member.carryover_hours + @time_entry.hours_worked
+    # else
+    #   @member.current_hours = @member.current_hours + @member.carryover_hours + @time_entry.hours_worked
+    # end
+    # @member.carryover_hours = @member.current_hours.remainder(2.75)
+    # @member.current_hours = @member.current_hours - @member.carryover_hours
+    # @member.save
 
 
     respond_to do |format|

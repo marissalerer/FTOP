@@ -4,8 +4,7 @@
 Park Slope Food Coop Id#: <span class='bold'><%= @time_entry.coop_id %></span><br/>
 
 Hours You Entered: <span class='bold'><%= @time_entry.hours_worked %></span><br/>
-# of Shifts currently earned for <%= Date::MONTHNAMES[Date.today.month] %>: <span class='bold'><%= (@member.current_hours/2.75).floor %></span><br/>
-Carryover Hours: <span class='bold'><%= @member.carryover_hours %></span><br/><br/>
+
 </p>
 <span class='italic'><%= link_to 'Edit', edit_time_entry_path(@time_entry) %></span>
 </div>
