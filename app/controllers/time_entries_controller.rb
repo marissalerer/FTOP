@@ -29,8 +29,8 @@ class TimeEntriesController < ApplicationController
   # GET /time_entries/reort.json
   def report
 
-    @startD = params[:s]
-    @endD = params[:e]
+    @startD = params[:start]
+    @endD = params[:end]
     @member = Member.all
     @time_entries = TimeEntry.all
     @report = MemberMonthReport.find(:all, :conditions => ['updated_at >= ? and updated_at <= ?',
