@@ -11,7 +11,17 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120804015806) do
+ActiveRecord::Schema.define(:version => 20120914153753) do
+
+  create_table "member_month_reports", :force => true do |t|
+    t.integer  "member_id"
+    t.integer  "year"
+    t.integer  "month"
+    t.float    "shifts_worked",   :default => 0.0
+    t.float    "carryover_hours", :default => 0.0
+    t.datetime "created_at",                       :null => false
+    t.datetime "updated_at",                       :null => false
+  end
 
   create_table "members", :force => true do |t|
     t.string   "coop_id"
