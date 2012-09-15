@@ -26,16 +26,13 @@ class TimeEntriesController < ApplicationController
   # GET /time_entries/report
   # GET /time_entries/reort.json
   def report
-
     @startD = params[:start].to_time
     @endD = params[:end].to_time
-    @member = Member.all
     
-    @report = MemberMonthReport.find(:all, :conditions => ['updated_at >= ? and updated_at <= ?',
-    @startD, @endD])
-
-    @time_entries = TimeEntry.find(:all, :conditions => ['updated_at >= ? and updated_at <= ?',
-    @startD, @endD])
+    #grab all MemberMonthReports which fall within date constraints
+    @reports = MemberMonthReport.
+      where('? <= start_date and end_date <= ?', @startD, @endD).
+      reorder(:start_date, :member_id)
     
     respond_to do |format|
       format.html # report.html.erb
@@ -63,28 +60,6 @@ class TimeEntriesController < ApplicationController
   # POST /time_entries.json
   def create
     @time_entry = TimeEntry.new(params[:time_entry])
-    @member = @time_entry.member
-
-    # add to member_month_report
-    @thisYear = Time.now.utc.strftime("%Y")
-    @thisMonth = Time.now.utc.strftime("%m")
-    @lastMonth = (Time.now.months_ago 1).utc.strftime("%m")
-    @lastYear = (Time.now.months_ago 1).utc.strftime("%Y")
-
-    @lastReport = @member.member_month_reports.where(year: @lastYear, month: @lastMonth).first_or_create!
-    @report = @member.member_month_reports.where(year: @thisYear, month: @thisMonth).first_or_create!
-
-    @totalHours = (@report.shifts_worked*2.75 + @time_entry.hours_worked + @report.carryover_hours + @lastReport.carryover_hours)
-    @report.carryover_hours = @totalHours.remainder(2.75)
-    @report.shifts_worked = (@totalHours-@report.carryover_hours)/2.75
-    @report.save
-
-    @member.carryover_hours = @report.carryover_hours
-    @member.current_hours = @report.shifts_worked*2.75
-
-    @lastReport.carryover_hours = 0;
-    @lastReport.save
-
 
     respond_to do |format|
       if @time_entry.save
