@@ -11,10 +11,9 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120915162459) do
+ActiveRecord::Schema.define(:version => 20120915164700) do
 
   create_table "member_month_reports", :force => true do |t|
-    t.string   "member_id",                        :null => false
     t.float    "shifts_worked",   :default => 0.0
     t.float    "carryover_hours", :default => 0.0
     t.datetime "created_at",                       :null => false
@@ -22,7 +21,10 @@ ActiveRecord::Schema.define(:version => 20120915162459) do
     t.date     "start_date"
     t.date     "end_date"
     t.float    "hours_worked",    :default => 0.0, :null => false
+    t.integer  "member_id",                        :null => false
   end
+
+  add_index "member_month_reports", ["member_id"], :name => "index_member_month_reports_on_member_id"
 
   create_table "members", :force => true do |t|
     t.string   "coop_id"
@@ -42,7 +44,7 @@ ActiveRecord::Schema.define(:version => 20120915162459) do
     t.datetime "created_at",   :null => false
     t.datetime "updated_at",   :null => false
     t.string   "description"
-    t.string   "member_id",    :null => false
+    t.integer  "member_id",    :null => false
   end
 
   add_index "time_entries", ["member_id"], :name => "index_time_entries_on_member_id"
