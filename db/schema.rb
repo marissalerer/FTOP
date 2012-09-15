@@ -11,10 +11,10 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120914214205) do
+ActiveRecord::Schema.define(:version => 20120915041329) do
 
   create_table "member_month_reports", :force => true do |t|
-    t.string   "member_id"
+    t.string   "member_id",                        :null => false
     t.integer  "year"
     t.integer  "month"
     t.float    "shifts_worked",   :default => 0.0
@@ -23,27 +23,31 @@ ActiveRecord::Schema.define(:version => 20120914214205) do
     t.datetime "updated_at",                       :null => false
   end
 
+  add_index "member_month_reports", ["member_id"], :name => "index_member_month_reports_on_member_id"
+
   create_table "members", :force => true do |t|
-    t.string   "coop_id"
+    t.string   "coop_id",                          :null => false
     t.string   "first_name",                       :null => false
     t.string   "last_name",                        :null => false
     t.string   "email_address",                    :null => false
+    t.float    "carryover_hours", :default => 0.0, :null => false
+    t.float    "current_hours",   :default => 0.0, :null => false
     t.datetime "created_at",                       :null => false
     t.datetime "updated_at",                       :null => false
-    t.float    "carryover_hours", :default => 0.0
-    t.float    "current_hours",   :default => 0.0
   end
 
   add_index "members", ["coop_id"], :name => "index_members_on_coop_id", :unique => true
   add_index "members", ["email_address"], :name => "index_members_on_email_address", :unique => true
 
   create_table "time_entries", :force => true do |t|
-    t.datetime "date_worked",                   :null => false
-    t.float    "hours_worked",                  :null => false
-    t.datetime "created_at",                    :null => false
-    t.datetime "updated_at",                    :null => false
-    t.string   "coop_id",      :default => "0", :null => false
+    t.date     "date_worked",  :null => false
+    t.float    "hours_worked", :null => false
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
     t.string   "description"
+    t.integer  "member_id",    :null => false
   end
+
+  add_index "time_entries", ["member_id"], :name => "index_time_entries_on_member_id"
 
 end

@@ -15,10 +15,9 @@
 <% @time_entries.each do |time_entry| %>
   <tr>
     <td><%= time_entry.created_at.strftime("%m/%d/%Y") %></td>
-    <td><%= time_entry.coop_id %></td>
+    <td><%= time_entry.member.coop_id %></td>
 
-    <% @member = Member.where(coop_id: time_entry.coop_id)[0] %>
-    <td><%= @member.first_name %> <%= @member.last_name %> </td>
+    <td><%= time_entry.member.first_name %> <%= time_entry.member.last_name %> </td>
 
     <td><%= time_entry.hours_worked %> </td>
     <td><%= time_entry.description %> </td>
