@@ -24,10 +24,10 @@ class MemberMonthReport < ActiveRecord::Base
   end
   
   def previous_report
-    MemberMonthReport.where('end_date <= ?', start_date).reorder(:start_date).last
+    member.member_month_reports.where('end_date <= ?', start_date).reorder(:start_date).last
   end
   def next_report
-    MemberMonthReport.where('start_date >= ?', end_date).reorder(:start_date).first
+    member.member_month_reports.where('start_date >= ?', end_date).reorder(:start_date).first
   end
   
   
