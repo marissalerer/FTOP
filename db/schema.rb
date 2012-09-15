@@ -26,8 +26,11 @@ ActiveRecord::Schema.define(:version => 20120915051320) do
 
   add_index "member_month_reports", ["member_id"], :name => "index_member_month_reports_on_member_id"
 
+# Could not dump table "member_test" because of following StandardError
+#   Unknown type '' for column 'id'
+
   create_table "members", :force => true do |t|
-    t.string   "coop_id",       :null => false
+    t.string   "coop_id"
     t.string   "first_name",    :null => false
     t.string   "last_name",     :null => false
     t.string   "email_address", :null => false
@@ -39,7 +42,7 @@ ActiveRecord::Schema.define(:version => 20120915051320) do
   add_index "members", ["email_address"], :name => "index_members_on_email_address", :unique => true
 
   create_table "time_entries", :force => true do |t|
-    t.date     "date_worked",  :null => false
+    t.datetime "date_worked",  :null => false
     t.float    "hours_worked", :null => false
     t.datetime "created_at",   :null => false
     t.datetime "updated_at",   :null => false

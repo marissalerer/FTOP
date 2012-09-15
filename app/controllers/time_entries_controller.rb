@@ -26,8 +26,9 @@ class TimeEntriesController < ApplicationController
   # GET /time_entries/report
   # GET /time_entries/reort.json
   def report
+
     @startD = params[:start].to_time
-    @endD = params[:end].to_time
+    @endD = params[:end].to_time 
     
     #grab all MemberMonthReports which fall within date constraints
     @reports = MemberMonthReport.
