@@ -6,6 +6,11 @@ class Member < ActiveRecord::Base
            inverse_of: :member,
            dependent: :destroy
 
+  has_many :member_month_reports,
+           inverse_of: :member,
+           dependent: :destroy
+           
+
 
   validates_presence_of :coop_id,
   						:first_name,

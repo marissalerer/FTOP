@@ -16,9 +16,8 @@
 <% @report.each do |report| %>
 <% if report.shifts_worked > 0 %>
   <tr>
-    <% @member = Member.find_by_coop_id(report.member_id) %>
-    <td><%= @member.full_name %></td>
-    <td><%= report.member_id %></td>
+    <td><%= report.member.full_name %></td>
+    <td><%= report.member.coop_id %></td>
     <td><%= report.shifts_worked %></td>
     <td><%= report.carryover_hours.to_f %></td>
   </tr>

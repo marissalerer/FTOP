@@ -71,9 +71,8 @@ class TimeEntriesController < ApplicationController
     @lastMonth = (Time.now.months_ago 1).utc.strftime("%m")
     @lastYear = (Time.now.months_ago 1).utc.strftime("%Y")
 
-    @lastReport = MemberMonthReport.find_or_create_by_member_id_and_year_and_month(:member_id => @time_entry.coop_id, :year => @lastYear, :month => @lastMonth)   
-
-    @report = MemberMonthReport.find_or_create_by_member_id_and_year_and_month(:member_id => @time_entry.coop_id, :year => @thisYear, :month => @thisMonth)
+    @lastReport = @member.member_month_reports.where(year: @lastYear, month: @lastMonth).first_or_create!
+    @report = @member.member_month_reports.where(year: @thisYear, month: @thisMonth).first_or_create!
 
     @totalHours = (@report.shifts_worked*2.75 + @time_entry.hours_worked + @report.carryover_hours + @lastReport.carryover_hours)
     @report.carryover_hours = @totalHours.remainder(2.75)
