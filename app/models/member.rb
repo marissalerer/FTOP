@@ -1,6 +1,5 @@
 class Member < ActiveRecord::Base
-  attr_accessible :coop_id, :first_name, :last_name, :email_address, :current_hours, :carryover_hours
-
+  attr_accessible :coop_id, :first_name, :last_name, :email_address
 
   has_many :time_entries,
            inverse_of: :member,
@@ -9,17 +8,15 @@ class Member < ActiveRecord::Base
   has_many :member_month_reports,
            inverse_of: :member,
            dependent: :destroy
-           
-
 
   validates_presence_of :coop_id,
-  						:first_name,
-  						:last_name,
-  						:email_address
+  						          :first_name,
+  						          :last_name,
+  						          :email_address
 
   validates_uniqueness_of :email_address, :coop_id
 
   def full_name
-  	self.first_name + " " + self.last_name
+  	first_name + " " + last_name
   end
 end

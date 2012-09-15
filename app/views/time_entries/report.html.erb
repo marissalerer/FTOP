@@ -13,7 +13,7 @@
     <td><strong>Carry Over Hours</strong><br/>(for next month)</td>
    </tr> 
 
-<% @report.each do |report| %>
+<% @reports.each do |report| %>
 <% if report.shifts_worked > 0 %>
   <tr>
     <td><%= report.member.full_name %></td>

@@ -6,13 +6,16 @@ class MemberMonthReport < ActiveRecord::Base
   after_save :update_next_report, if: :carryover_hours_changed?
   
   def update_hours
+    #grab carryover hours from previous report
     last_carryover_hours = previous_report.try(:carryover_hours) || 0
     total_hours = hours_worked + last_carryover_hours
+    
     self.shifts_worked = (total_hours / 2.75).floor
     self.carryover_hours = total_hours - shifts_worked * 2.75
   end
   
   def update_next_report
+    #if carryhour hours have changed, tell next month it has more hours to work with
     r = next_report
     return unless r
     
@@ -29,6 +32,7 @@ class MemberMonthReport < ActiveRecord::Base
   
   
   def self.for_date(date)
+    #find or create a member_month_report surrounding the given date
     where("start_date <= ? AND ? < end_date", date, date).first_or_create! do |r|
       range = range_around(date)
       r.start_date = range.begin
@@ -37,6 +41,7 @@ class MemberMonthReport < ActiveRecord::Base
   end
   
   def self.range_around(date)
+    #given a date, returns a range starting on the previous 15th of the month and ending on the following
     if date.day >= 15
       start_date = date - (date.day - 15).days
 

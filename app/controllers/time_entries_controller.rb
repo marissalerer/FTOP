@@ -29,7 +29,8 @@ class TimeEntriesController < ApplicationController
     @startD = params[:start].to_time
     @endD = params[:end].to_time
     
-    @report = MemberMonthReport.
+    #grab all MemberMonthReports which fall within date constraints
+    @reports = MemberMonthReport.
       where('? <= start_date and end_date <= ?', @startD, @endD).
       reorder(:start_date, :member_id)
     
