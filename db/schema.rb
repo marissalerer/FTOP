@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120915045835) do
+ActiveRecord::Schema.define(:version => 20120915051320) do
 
   create_table "member_month_reports", :force => true do |t|
     t.string   "member_id",                        :null => false
