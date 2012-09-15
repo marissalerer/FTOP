@@ -24,25 +24,25 @@ ActiveRecord::Schema.define(:version => 20120914214205) do
   end
 
   create_table "members", :force => true do |t|
-    t.string   "coop_id"
+    t.string   "coop_id",                          :null => false
     t.string   "first_name",                       :null => false
     t.string   "last_name",                        :null => false
     t.string   "email_address",                    :null => false
+    t.float    "carryover_hours", :default => 0.0, :null => false
+    t.float    "current_hours",   :default => 0.0, :null => false
     t.datetime "created_at",                       :null => false
     t.datetime "updated_at",                       :null => false
-    t.float    "carryover_hours", :default => 0.0
-    t.float    "current_hours",   :default => 0.0
   end
 
   add_index "members", ["coop_id"], :name => "index_members_on_coop_id", :unique => true
   add_index "members", ["email_address"], :name => "index_members_on_email_address", :unique => true
 
   create_table "time_entries", :force => true do |t|
-    t.datetime "date_worked",                   :null => false
-    t.float    "hours_worked",                  :null => false
-    t.datetime "created_at",                    :null => false
-    t.datetime "updated_at",                    :null => false
-    t.string   "coop_id",      :default => "0", :null => false
+    t.date     "date_worked",  :null => false
+    t.float    "hours_worked", :null => false
+    t.string   "coop_id",      :null => false
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
     t.string   "description"
   end
 
