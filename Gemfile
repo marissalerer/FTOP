@@ -22,6 +22,7 @@ end
 
 group :development, :test do
   gem 'sqlite3'
-  gem 'heroku'
-  gem 'taps' # used for heroku db:pull
 end
+
+
+
