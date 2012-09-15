@@ -9,6 +9,7 @@ class TimeEntry < ActiveRecord::Base
   											:hours_worked,
   											:coop_id
 	
+	validates_numericality_of :hours_worked, greater_than: 0
 
   # Callbacks
   after_save :update_member_month_report
