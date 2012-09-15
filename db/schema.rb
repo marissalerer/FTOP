@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120915051320) do
+ActiveRecord::Schema.define(:version => 20120915162459) do
 
   create_table "member_month_reports", :force => true do |t|
     t.string   "member_id",                        :null => false
@@ -47,7 +47,7 @@ ActiveRecord::Schema.define(:version => 20120915051320) do
     t.datetime "created_at",   :null => false
     t.datetime "updated_at",   :null => false
     t.string   "description"
-    t.integer  "member_id",    :null => false
+    t.string   "member_id",    :null => false
   end
 
   add_index "time_entries", ["member_id"], :name => "index_time_entries_on_member_id"
