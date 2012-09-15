@@ -16,8 +16,6 @@ class TimeEntriesController < ApplicationController
   # GET /time_entries/1.json
   def show
     @time_entry = TimeEntry.find(params[:id])
-    @coop_id = @time_entry.coop_id
-    @member = Member.where(coop_id: @coop_id)[0]
 
     respond_to do |format|
       format.html # show.html.erb
@@ -49,8 +47,6 @@ class TimeEntriesController < ApplicationController
   # GET /time_entries/new.json
   def new
     @time_entry = TimeEntry.new
-    #@supervisors = Member.where(supervisor: true)
-    @members = Member.find(:all, :order => 'last_name ASC')
 
     respond_to do |format|
       format.html # new.html.erb
@@ -67,7 +63,7 @@ class TimeEntriesController < ApplicationController
   # POST /time_entries.json
   def create
     @time_entry = TimeEntry.new(params[:time_entry])
-    @member = Member.where(coop_id: @time_entry.coop_id)[0]
+    @member = @time_entry.member
 
     # add to member_month_report
     @thisYear = Time.now.utc.strftime("%Y")
