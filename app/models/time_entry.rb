@@ -16,28 +16,14 @@ class TimeEntry < ActiveRecord::Base
   before_destroy :remove_member_month_report_hours
   
   def update_member_month_report
-    #update and notify member_month_reports of new or updated time entry
-    
-    #update report hours if time_entry date has changed
-    old_report = member.member_month_reports.for_date(date_worked_was) if date_worked_was
-    new_report = member.member_month_reports.for_date(date_worked)
-    
-    if old_report && old_report != new_report
-      # if the reports changed, update the hours for each
-      old_report.hours_worked -= hours_worked_was
-      new_report.hours_worked += hours_worked
-      
-      [old_report, new_report].each(&:save!)
-    else
-      # update the hours
-      new_report.hours_worked += hours_worked - (hours_worked_was || 0)
-      new_report.save!
-    end    
+    report = member.member_month_reports.for_date(created_at)
+    report.hours_worked += hours_worked - (hours_worked_was || 0)
+    report.save!
   end
   
   def remove_member_month_report_hours
     #if a time entry is removed, delete the hours associated with its report
-    report = member.member_month_reports.for_date(date_worked_was)
+    report = member.member_month_reports.for_date(created_at)
     report.hours_worked -= hours_worked_was
     report.save!
   end
