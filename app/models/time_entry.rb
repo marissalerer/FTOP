@@ -4,10 +4,11 @@ class TimeEntry < ActiveRecord::Base
   belongs_to :member,
              inverse_of: :time_entries
 
-  validates_presence_of :member,
-  											:date_worked,
-  											:hours_worked,
-  											:coop_id
+  validates_presence_of :date_worked,
+  											:hours_worked
+  											
+  #validates_presence_of :member, :message => ""
+  validates_presence_of :coop_id, :message => "is invalid."
 	
 	validates_numericality_of :hours_worked, greater_than: 0
 

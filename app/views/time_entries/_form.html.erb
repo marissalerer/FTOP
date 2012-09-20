@@ -4,40 +4,39 @@
 <%= form_for(@time_entry) do |f| %>
   <% if @time_entry.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@time_entry.errors.count, "error") %> prohibited this time_entry from being saved:</h2>
+      <p class="italic"><%= pluralize(@time_entry.errors.count, "error") %> prohibited this Time Entry from being saved:</p>
 
-      <ul>
       <% @time_entry.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
+        <p><%= msg %></p>
       <% end %>
-      </ul>
+      <p class="bold">Please refresh page and try again. Still having trouble? Please <%= mail_to "bfcftop@gmail.com", "email us", :encode => "javascript" %></p>
     </div>
   <% end %>
 
   <table class="entry">
     <tr>
       <td><%= f.label 'Food Coop Id#' %></td>
-      <td><%= f.text_field :coop_id, :placeholder => '12345', :value => '' %></td>
+      <td><%= f.text_field :coop_id, :placeholder => '12345Z', :value => '' %></td>
     </tr>
 
 
 
     <tr>
-      <td><%= f.label 'Date Worked', :placeholder => 'yyyy-mm-dd', :value => 'yyyy-mm-dd' %></td>
+      <td><%= f.label 'Date Worked', :placeholder => 'yyyy-mm-dd' %></td>
 
 
 
-      <td><%= f.text_field :date_worked,  'data-behaviour'=>'datepicker' %></td>
+      <td><%= f.text_field :date_worked, :placeholder => 'yyyy-mm-dd',  'data-behaviour'=>'datepicker' %></td>
     </tr>
 
     <tr>
       <td><%= f.label 'Number of Hours' %></td>
-      <td><%= f.text_field :hours_worked, :placeholder => '0.00', :value => '' %></td>
+      <td><%= f.text_field :hours_worked, :placeholder => '0.00' %></td>
     </tr>
 
     <tr>
       <td valign="top"><%= f.label 'Description' %></td>
-      <td><%= f.text_area :description, :placeholder => 'optional', :value => '', :rows => 5 %></td>
+      <td><%= f.text_area :description, :placeholder => 'optional', :rows => 5 %></td>
     </tr>
 
     <tr>
