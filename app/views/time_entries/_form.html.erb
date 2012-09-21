@@ -9,7 +9,7 @@
       <% @time_entry.errors.full_messages.each do |msg| %>
         <p><%= msg %></p>
       <% end %>
-      <p class="bold">Please refresh page and try again. Still having trouble? Please <%= mail_to "bfcftop@gmail.com", "email us", :encode => "javascript" %></p>
+      <p class="bold">Please correct the errors and try again. Still having trouble? Please <%= mail_to "bfcftop@gmail.com", "email us", :encode => "javascript", :subject => "Please add me to the BFC FTOP system", :body => "Include your full name and Coop ID" %></p>
     </div>
   <% end %>
 

@@ -3,7 +3,7 @@
 <div id="form-wrapper">
 	<h1>Enter your time here!</h1>
 	<p class="italic small">For FTOP Credits at the Park Slope Food Coop<br/>
-  (You must be registered.  Not registered?, <a href="mailto:bfcftop@gmail.com?subject=please%20add%20me%20to%20the%20BFC%20FTOP%20system&body=Include%20your%20Full%20Name%20and%20Coop%20ID:">Email us</a> to get registered)</p>
+  (You must be registered.  Not registered?, <%= mail_to "bfcftop@gmail.com", "email us", :encode => "javascript", :subject => "Please add me to the BFC FTOP system", :body => "Include your full name and Coop ID" %> to get registered)</p>
 <%= render 'form' %>
 </div>
 
