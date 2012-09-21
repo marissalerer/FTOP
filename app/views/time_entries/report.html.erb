@@ -6,19 +6,20 @@
 
 <table border="1" cellpadding="5" cellspacing="5">
   <tr>
-    <td><strong>Name</strong></td>
+    <td><strong>First Name</strong></td>
+    <td><strong>Last Name</strong></td>
     <td><strong>Coop ID</strong></td>
     <td><strong>Shifts</strong></td>
-    <td><strong>Carry Over Hours</strong><br/>(for next month)</td>
+    
    </tr> 
 
 <% @reports.each do |report| %>
 <% if report.shifts_worked > 0 %>
   <tr>
-    <td><%= report.member.full_name %></td>
+    <td><%= report.member.first_name %></td>
+    <td><%= report.member.last_name %></td>
     <td><%= report.member.coop_id %></td>
     <td><%= report.shifts_worked %></td>
-    <td><%= report.carryover_hours.to_f %></td>
   </tr>
   <% end %>
 <% end %>
