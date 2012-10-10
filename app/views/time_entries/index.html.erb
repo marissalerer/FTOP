@@ -9,7 +9,6 @@
     <th>Description</th>
     <th></th>
     <th></th>
-    <th></th>
   </tr>
 
 <% @time_entries.each do |time_entry| %>
@@ -22,7 +21,6 @@
     <td><%= time_entry.hours_worked %> </td>
     <td><%= time_entry.description %> </td>
 
-    <td><%= link_to 'Show', time_entry %></td>
     <td><%= link_to 'Edit', edit_time_entry_path(time_entry) %></td>
     <td>
 
