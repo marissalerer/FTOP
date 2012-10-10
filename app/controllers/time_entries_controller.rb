@@ -2,7 +2,7 @@ class TimeEntriesController < ApplicationController
   # GET /time_entries
   # GET /time_entries.json
   def index
-    @time_entries = TimeEntry.all
+    @time_entries = TimeEntry.order("date_worked DESC").all
     #@supervisors = Member.where(supervisor: true)
     #@member = Member.all
 
