@@ -2,7 +2,7 @@ class MembersController < ApplicationController
   # GET /members
   # GET /members.json
   def index
-    @members = Member.order(:last_name)
+    @members = Member.order(:first_name)
 
     respond_to do |format|
       format.html # index.html.erb
