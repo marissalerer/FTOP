@@ -19,7 +19,7 @@ body, html{
 
 #container{
 	/*width:940px;*/
-	width:650px;
+	width:940px;
 	margin:auto;
 	padding:10px 20px;
 	
@@ -27,15 +27,24 @@ body, html{
 
 
 #form-wrapper{
+	width:650px;
 	border:1px solid #ccc;
 	padding:20px 10px;
 	background: #edf2eb;
 }
 
 
-
 table{
 	margin: 10px 0px;
+}
+
+
+/* Sortable tables */
+table.sortable thead {
+    background-color:#eee;
+    color:#666666;
+    font-weight: bold;
+    cursor: default;
 }
 
 /**= require bootstrap-datepicker*/
